@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resemu OA 办公自动化系统 · 项目手册</title>
+    <title>OA 全栈作品集系统 · FullStack OA Showcase</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -74,7 +74,7 @@
             background: linear-gradient(180deg, #ffffff 0%, #f6f8fa 100%);
             border-bottom: 1px solid var(--line);
         }
-        .hero-inner { max-width: 1120px; margin: 0 auto; }
+        .hero-inner { max-width: 1520px; margin: 0 auto; }
         .eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 12px; color: var(--primary);
@@ -112,7 +112,7 @@
 
         /* ---------- STATS ROW ---------- */
         .stats-row {
-            max-width: 1120px; margin: 32px auto 0; padding: 0 32px;
+            max-width: 1520px; margin: 32px auto 0; padding: 0 32px;
             display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
         }
         .stat {
@@ -126,9 +126,9 @@
 
         /* ---------- LAYOUT ---------- */
         .layout {
-            max-width: 1120px; margin: 40px auto 64px;
+            max-width: 1520px; margin: 40px auto 64px;
             padding: 0 32px;
-            display: grid; grid-template-columns: 230px 1fr; gap: 32px;
+            display: grid; grid-template-columns: 240px 1fr; gap: 32px;
             align-items: start;
         }
 
@@ -267,6 +267,117 @@
 
         .divider { height: 0; margin: 48px 0; border: none; border-bottom: 1px dashed var(--line); }
 
+        /* ---------- DUAL LAYOUT: list shot + arrow + detail card ---------- */
+        .dual {
+            display: grid;
+            grid-template-columns: 62% 3% 35%;
+            gap: 0;
+            align-items: start;
+        }
+        .dual .shot-frame {
+            border-bottom: none;
+            border-right: none;
+        }
+        .dual .shot-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .dual .shot-main {
+            background: #fff;
+            border: 1px solid #c7d2fe;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .dual .shot-main .shot-frame {
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 14px;
+        }
+        .dual .shot-main img {
+            width: 100%; height: auto;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            display: block;
+            background: #fff;
+        }
+        .arrow-col {
+            position: relative;
+            align-self: stretch;
+            min-height: 380px;
+        }
+        .arrow-col svg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+        .arrow-label {
+            position: absolute;
+            top: calc(50% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10.5px;
+            font-weight: 600;
+            color: #1f5fd8;
+            background: #fff;
+            padding: 2px 8px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .detail-card {
+            background: #fff;
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(47, 111, 235, 0.12);
+        }
+        .detail-card .detail-frame {
+            background: var(--accent);
+            padding: 10px;
+            border-bottom: 1px solid var(--accent);
+            cursor: zoom-in;
+            position: relative;
+        }
+        .detail-card img {
+            width: 100%; height: auto;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            display: block;
+            background: #fff;
+        }
+        .detail-caption {
+            padding: 10px 12px;
+        }
+        .detail-caption h5 {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .detail-caption h5::before {
+            content: "";
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+            flex-shrink: 0;
+        }
+        .detail-caption p {
+            font-size: 11.5px;
+            color: var(--ink-2);
+            line-height: 1.5;
+        }
+        .detail-caption .data-chips {
+            margin-top: 6px;
+        }
+
         /* ---------- FOOTER ---------- */
         .footer {
             border-top: 1px solid var(--line); background: #fff;
@@ -310,6 +421,10 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
+        @media (max-width: 1200px) {
+            .dual { grid-template-columns: 1fr; }
+            .arrow-col { display: none; }
+        }
         @media (max-width: 960px) {
             .stats-row { grid-template-columns: repeat(3, 1fr); }
             .layout { grid-template-columns: 1fr; }
@@ -332,7 +447,7 @@
     <div class="topbar-left">
         <div class="brand-mark">OA</div>
         <div>
-            <div class="brand-title">Resemu OA · 项目手册</div>
+            <div class="brand-title">FullStack OA · 全栈作品集手册</div>
             <div class="brand-sub">Portfolio Project Handbook · Static HTML for GitHub Pages</div>
         </div>
     </div>
@@ -347,7 +462,7 @@
 <div class="hero">
     <div class="hero-inner">
         <span class="eyebrow">📋 企业级全栈办公自动化平台 · 独立作品集项目</span>
-        <h1>Resemu <em>OA System</em><br>从登录到报表的全流程功能截图</h1>
+        <h1>FullStack <em>OA 全栈作品集</em><br>从登录到报表的端到端全流程功能展示</h1>
         <p class="hero-desc">
             面向中小型企业的 OA 办公自动化系统，覆盖 <b>用户 & 部门 & 角色（RBAC 权限）</b> 三支柱，
             外加 <b>考勤休假 · 审批流 · 费用报销 · 会议室 · 资产 · 公告 · 报表</b> 8 大业务模块。
@@ -388,7 +503,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-    Resemu OA System © 2026 · 独立完成全栈开发 · 8 个迭代阶段 ·
+    FullStack OA Showcase © 2026 · 独立完成全栈开发 · 8 个迭代阶段 ·
     <a href="#dashboard">↑ 回到顶部</a>
 </div>
 
@@ -427,6 +542,9 @@ const MODULES = [
         key: 'attendance', icon: '📅', title: '考勤休假 · Attendance', badge: '管理员视图 · 227 条记录',
         desc: '支持 4 种视图：打卡 / 历史 / 请假余额 / 管理员全量；打卡时间精度到秒，月统计自动计算迟到、早退、缺勤、请假天数。',
         shot: '02_attendance_admin.png', cap: '管理员全量考勤视图（按分页展示 20 条/页，共 227 条）',
+        arrowLabel: '点击 History Tab →',
+        detailShot: 'details/d_attendance.png', detailCap: 'Employee 视图 · History 月历 + Daily Records（July 2026）', detailDesc: '点击 History Tab 切换后的员工个人考勤历史页：上方 Clock In/Out / History / Leave 三 Tab，July 2026 月历（色块标注 Present 绿 / Late 黄 / Annual 蓝 / Sick 橙 / Personal 紫 / No Record 灰，7/7 与 7/28 高亮选中）+ 下方 Daily Records 明细表（Date / Day / Clock In / Clock Out / Work Hours / Status / Leave Type，20 days recorded）。',
+        detailMeta: [['acc','Tab','History 月历视图'],['warn','7 月记录','20 days recorded'],['ok','状态','6 种色块分类']],
         meta: [
             ['ok', '全量记录', '227'], ['warn', 'LATE 迟到', '14'], ['acc', 'LEAVE 请假', '19'], ['warn', 'ABSENT', '8']
         ],
@@ -442,7 +560,9 @@ const MODULES = [
     {
         key: 'approvals', icon: '📝', title: '审批流 · Approvals', badge: '全部审批 · 35+ 条多类型',
         desc: '覆盖 5 大审批类型：休假 / 差旅 / 费用报销 / 采购 / 通用申请；每类多级审批步骤，步骤进度条实时更新。',
-        shot: '03_approvals_all.png', cap: '全部审批列表 · 35+ 条，按时间倒序',
+        shot: '03_approvals_all.png', cap: '全部审批列表 · All Approvals Tab',
+        detailShot: 'details/d_approval.png', detailCap: '第 2 行 · [Demo] 7月27日加班 2小时（客户需求紧急）', detailDesc: '左侧 Request Details（Description / Date Range / Requester / Created）+ 右侧 Approval Flow 步骤进度条（Step 1 Dept Manager ✓ 同意 → Step 2 HR Manager 等待）。',
+        detailMeta: [['acc','类型','Overtime Request'],['warn','状态','Pending · Step 1/2'],['ok','申请人','Dept Mgr']],
         meta: [
             ['ok', '全部审批', '35+'], ['warn', 'PENDING', '11'], ['ok', 'APPROVED', '18'], ['danger', 'REJECTED', '4']
         ],
@@ -461,6 +581,8 @@ const MODULES = [
         key: 'expenses', icon: '💰', title: '费用报销 · Expense Management', badge: '待审批列表 · 156 条全量',
         desc: '6 大费用类别：差旅 / 餐饮 / 办公用品 / 电子设备 / 交通 / 培训；多级审批 + 预算控制 + 发票上传确认。',
         shot: '04_expenses_pending.png', cap: '费用报销 · 待审批视图（18 条待批示例）',
+        detailShot: 'details/d_expense.png', detailCap: '第 1 行 · 季度办公用品采购', detailDesc: 'Expense Details 详情 + Approve/Reject 操作按钮 + Approval Timeline 审批时间线。',
+        detailMeta: [['ok','类目','Office Supplies'],['warn','金额','$1280'],['warn','状态','Pending TL']],
         meta: [
             ['ok', '报销单总量', '156'], ['warn', '待审批', '18'], ['ok', '已通过', '115'], ['acc', '金额范围', '$35 ~ $3.8k']
         ],
@@ -479,6 +601,8 @@ const MODULES = [
         key: 'bookings', icon: '🏢', title: '会议室预订 · Bookings', badge: '全部预订 · 28 条跨会议室',
         desc: '5 个会议室（A~E，容量 4~16 人，配置投影/白板/视频会议设备）；15 分钟粒度预订冲突检测；状态三态。',
         shot: '05_bookings_all.png', cap: '预订总览 · 全量 28 条 · 5 个会议室混合',
+        detailShot: 'details/d_booking.png', detailCap: '第 2 行 · [Demo] 供应商洽谈 · PENDING', detailDesc: 'Start/End Time + Attendees 3 人 + Room 详情（小会议室 B · 2F-中区 205 · Capacity 6）+ Booked By Finance Manager(@finance) + 右上 Approve/Reject 审批按钮。',
+        detailMeta: [['warn','状态','PENDING'],['acc','房间','小会议室 B'],['ok','时长','11:00-12:00 · 1h · 3人']],
         meta: [
             ['ok', '预订数', '28'], ['acc', '会议室', '5 间'], ['warn', 'PENDING', '4'], ['ok', 'CONFIRMED', '21']
         ],
@@ -495,10 +619,14 @@ const MODULES = [
     },
     {
         key: 'meeting-rooms', icon: '🚪', title: '会议室管理 · Meeting Rooms', badge: '房间卡片 · 容量/设备配置',
-        desc: '可视化展示每间会议室的容量、配套设备、楼层位置和当前状态，支持新建 / 编辑 / 停用。',
-        shot: '06_meeting_rooms.png', cap: '会议室列表 · 5 间 · 容量与设备配置',
+        desc: '可视化展示每间会议室的容量、配套设备、楼层位置和当前状态，支持新建 / 编辑 / 停用；详情页直接提供周可用性选择与一键预订。',
+        shot: '06_meeting_rooms.png', cap: '会议室总览 · 6 间卡片（Maintenance / Available / Reserved 三状态）',
+        detailShot: 'details/d_room.png',
+        detailCap: '第 2 行第 1 张 · [Demo] 大会议室 A · 3F-东翼 301 · 容量 20 人',
+        detailDesc: 'Room Info（位置 / 容量 / 设备 / 入驻时间）+ 右侧 Upcoming Bookings 即将预订卡片 + 下方 Weekly Availability 周视图 + Book Now 一键预订操作区。',
+        detailMeta: [['ok','状态','AVAILABLE'],['acc','容量','20 people'],['warn','楼层','3F-东翼 301']],
         meta: [
-            ['acc', '房间数', '5'], ['ok', '运营中', '5'], ['acc', '最大容量', '16 人'],
+            ['acc', '房间数', '6'], ['ok', '可用 AVAILABLE', '3'], ['warn', '维护/预订中', '3'], ['acc', '最大容量', '50 人']
         ],
         features: [
             ['A', '卡片展示', '容量、楼层、设备图标一目了然。'],
@@ -515,6 +643,8 @@ const MODULES = [
         key: 'assets', icon: '📦', title: '资产管理 · Assets', badge: '全生命周期 · 40 件',
         desc: '覆盖家具 / 电子 / IT 设备 / 车辆 / 办公用品 / 其他 6 大类；状态 6 种，支持分配、归还、调拨、报废、维修记录。',
         shot: '07_assets.png', cap: '资产总览 · 40 件 · 按资产编号排序',
+        detailShot: 'details/d_asset.png', detailCap: '第 1 行 · 钢制办公文件柜 4层', detailDesc: 'Info / Allocations / Maintenance 三 Tab + Transfer / Schedule Maintenance / Retire / Edit 按钮 + Quick Stats。',
+        detailMeta: [['ok','状态','ASSIGNED'],['warn','价格','$1299'],['acc','分类','Office Furniture']],
         meta: [
             ['acc', '总量', '40'], ['ok', '在用 IN_USE', '22'], ['warn', '维护中', '5'], ['acc', '分类', '6 大类']
         ],
@@ -533,6 +663,8 @@ const MODULES = [
         key: 'announcements', icon: '📢', title: '公告中心 · Announcements', badge: '7 条 · 置顶 + 三态',
         desc: '支持发布/草稿/排期三态；置顶 4 条优先显示；可附带附件、阅读次数、重要等级标签。',
         shot: '08_announcements.png', cap: '公告列表 · 4 Pin 置顶 + 普通公告',
+        detailShot: 'details/d_announcement.png', detailCap: '第 1 条置顶 · Q3 OKR 公布', detailDesc: 'Published + Pinned 双徽章 + 公告正文 + 有效期 + Edit/Delete 操作区。',
+        detailMeta: [['ok','状态','Published'],['warn','置顶','PINNED'],['acc','作者','Admin @ 7/21']],
         meta: [
             ['ok', '总数', '7'], ['warn', '置顶 PIN', '4'], ['acc', '已发布', '5'], ['warn', '草稿/排期', '2']
         ],
@@ -587,6 +719,8 @@ const MODULES = [
         key: 'roles', icon: '🛡', title: '角色权限 · RBAC', badge: '8 角色 · 权限矩阵',
         desc: '8 种预置角色覆盖企业常见岗位；每个角色独立 30+ 权限代码位，支持自定义新增与编辑。',
         shot: '11_roles.png', cap: '角色列表 · 8 种角色 · 权限数',
+        detailShot: 'details/d_role_permissions.png', detailCap: 'Employee 行 · 权限明细弹窗（18 项权限勾选）', detailDesc: 'Permission Assignment 弹窗：角色名 Employee + 权限分类分组勾选（Auth / User / Dept / Role / Attendance / Approval / Expense / Booking / Room / Asset / Announcement / Report 共 12 类）+ 底部 Save / Cancel 操作。',
+        detailMeta: [['ok','角色','Employee'],['acc','权限数','18 项 / 52 总'],['warn','分组','12 个功能模块']],
         meta: [
             ['acc', '角色', '8'], ['ok', '权限代码', '30+'],
         ],
@@ -605,6 +739,8 @@ const MODULES = [
         key: 'reports', icon: '📈', title: '报表中心 · Reports', badge: '5 张报表 · Excel 导出',
         desc: 'HR / 考勤 / 审批 / 报销 / 资产 5 大报表卡片；支持 Excel 导出、自定义日期范围筛选。',
         shot: '12_reports.png', cap: '报表中心入口 · 5 大报表卡片',
+        detailShot: 'details/d_report.png', detailCap: 'Expense Report · 费用报销分析报表（6 大数据视图）', detailDesc: '筛选栏（Date Range / Department / Year）+ 指标卡（Total/Approved/Pending/Reimbursed）+ 下方 6 大分析视图：Department Spending 柱状图 + Category Distribution 饼图 + Monthly Trend 折线图 + Top 10 Spenders 排名表 + Department Trends 月度对比 + Budget vs Actual 预算执行表。',
+        detailMeta: [['ok','报表类型','Expense Report'],['acc','分析视图','6 个图表 + 表格'],['warn','导出','CSV + XLSX']],
         meta: [
             ['acc', '报表数', '5'], ['ok', '导出格式', 'XLSX'], ['acc', '数据维度', '多维聚合'],
         ],
@@ -657,6 +793,72 @@ MODULES.forEach((m, idx) => {
         `<span class="stack-item">${t}<small> · ${sub}</small></span>`
     ).join('');
 
+    let shotBlock;
+    if (m.detailShot) {
+        const dMeta = (m.detailMeta || []).map(([type, label, val]) =>
+            `<span class="dc ${type}">${label} <b>${val}</b></span>`
+        ).join('');
+        shotBlock = `
+        <div class="dual">
+            <!-- LEFT: list shot (62%) -->
+            <div class="shot-main">
+                <div class="shot-frame"
+                     onclick="openLightbox('assets/screenshots/${m.shot}','${m.cap}','${m.badge}')"
+                     title="点击查看大图">
+                    <img loading="lazy" src="assets/screenshots/${m.shot}" alt="${m.title} 列表截图">
+                </div>
+                <div class="shot-caption">
+                    <h4>${m.cap}
+                        <small>🖱 点击截图可放大查看 · width 1366px · full-page</small>
+                    </h4>
+                    <div class="data-chips">${metaChips}</div>
+                </div>
+            </div>
+            <!-- MIDDLE: arrow SVG (3%) -->
+            <div class="arrow-col" aria-hidden="true">
+                <svg viewBox="0 0 30 140" fill="none" preserveAspectRatio="none">
+                    <defs>
+                        <marker id="arr-${m.key}" viewBox="0 0 8 8" refX="7" refY="4"
+                                markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+                            <path d="M1 1 L7 4 L1 7 Z" fill="#1f5fd8"/>
+                        </marker>
+                    </defs>
+                    <path d="M2 30 C 16 16, 16 120, 28 110"
+                          stroke="#1f5fd8" stroke-width="1.8" stroke-dasharray="4 3"
+                          stroke-linecap="round" marker-end="url(#arr-${m.key})"/>
+                </svg>
+                <div class="arrow-label">${m.arrowLabel || '点击 该行 →'}</div>
+            </div>
+            <!-- RIGHT: detail card (35%) -->
+            <div class="detail-card">
+                <div class="detail-frame"
+                     onclick="openLightbox('assets/screenshots/${m.detailShot}','${m.detailCap || m.title + ' 详情'}','Details')"
+                     title="点击查看详情大图">
+                    <img loading="lazy" src="assets/screenshots/${m.detailShot}" alt="${m.title} 详情页截图">
+                </div>
+                <div class="detail-caption">
+                    <h5>${m.detailCap || (m.title + ' 详情')}</h5>
+                    <p>${m.detailDesc || ''}</p>
+                    ${dMeta ? `<div class="data-chips">${dMeta}</div>` : ''}
+                </div>
+            </div>
+        </div>`;
+    } else {
+        shotBlock = `
+        <div class="shot-card">
+            <div class="shot-frame"
+                 onclick="openLightbox('assets/screenshots/${m.shot}','${m.cap}','${m.badge}')">
+                <img loading="lazy" src="assets/screenshots/${m.shot}" alt="${m.title} 截图">
+            </div>
+            <div class="shot-caption">
+                <h4>${m.cap}
+                    <small>🖱 点击截图可放大查看 · width 1366px · full-page</small>
+                </h4>
+                <div class="data-chips">${metaChips}</div>
+            </div>
+        </div>`;
+    }
+
     section.innerHTML = `
         <div class="section-head">
             <div class="section-title">
@@ -669,18 +871,7 @@ MODULES.forEach((m, idx) => {
 
         <div class="feature-grid">${features}</div>
 
-        <div class="shot-card">
-            <div class="shot-frame"
-                 onclick="openLightbox('assets/screenshots/${m.shot}','${m.cap}','${m.badge}')">
-                <img loading="lazy" src="assets/screenshots/${m.shot}" alt="${m.title} 截图">
-            </div>
-            <div class="shot-caption">
-                <h4>${m.cap}
-                    <small>🖱 点击截图可放大查看 · width 1366px · full-page</small>
-                </h4>
-                <div class="data-chips">${metaChips}</div>
-            </div>
-        </div>
+        ${shotBlock}
 
         <div class="tech-stack">
             <div class="tech-stack-title">🛠 技术栈 · Tech Stack</div>
