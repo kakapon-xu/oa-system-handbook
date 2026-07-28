@@ -524,52 +524,52 @@
 const MODULES = [
     {
         key: 'dashboard', icon: '📊', title: '仪表盘 · Dashboard', badge: '首页总览',
-        desc: '全局数据一目了然：用户/部门/活跃/新用户 4 大指标卡 + 今日打卡 + 月考勤日历 + 请假余额统计 + 报销趋势卡 + 最新公告（含置顶标）。',
-        shot: '01_dashboard.png', cap: '管理员仪表盘 · 1366×900 视口下完整页面',
+        desc: '全局数据一目了然：用户/部门/活跃/新用户 4 大指标卡 + 今日打卡状态概览 + 最新置顶公告推送；所有卡片支持点击跳转对应模块。',
+        shot: '01_dashboard.png', cap: '管理员仪表盘 · 指标卡 + 今日打卡 + 置顶公告',
         meta: [
-            ['ok', '指标卡', '4'], ['acc', '日历打卡', '23 天'], ['warn', '待办审批', '3'], ['acc', '置顶公告', '2']
+            ['ok', '指标卡', '4'], ['acc', '今日打卡条目', '3'], ['warn', '考勤状态数', '3 种'], ['acc', '置顶公告', '2']
         ],
         features: [
-            ['A', '全局指标', '用户总数、部门数、本月活跃、本周新注册。'],
-            ['B', '考勤日历', '当前月份视图，不同状态色块区分迟到/缺勤/请假。'],
-            ['C', '公告推送', '置顶公告优先展示，支持点击进入详情。'],
+            ['A', '全局指标', '总用户、部门数、活跃用户、本周新注册。'],
+            ['B', '今日打卡', 'Present / Late / Absent + 今日上下班签到时间。'],
+            ['C', '公告推送', '置顶优先展示，支持 View All 跳转公告中心。'],
         ],
         stack: [
             ['React', 'Hooks'], ['Axios', '并发 Promise.all'], ['Tailwind', 'Grid 响应式'], ['Lucide', '图标库']
         ],
     },
     {
-        key: 'attendance', icon: '📅', title: '考勤休假 · Attendance', badge: '管理员视图 · 227 条记录',
-        desc: '支持 4 种视图：打卡 / 历史 / 请假余额 / 管理员全量；打卡时间精度到秒，月统计自动计算迟到、早退、缺勤、请假天数。',
-        shot: '02_attendance_admin.png', cap: '管理员全量考勤视图（按分页展示 20 条/页，共 227 条）',
+        key: 'attendance', icon: '📅', title: '考勤休假 · Attendance', badge: '个人打卡 + 历史月度视图',
+        desc: '4 种视图：Clock In/Out 实时打卡 + History 月历色块 + Leave 余额 + All Records；今日时间、本月汇总与假期余额实时联动。',
+        shot: '02_attendance_admin.png', cap: 'Clock In/Out 打卡页 · 本月汇总 + 假期余额',
         arrowLabel: '点击 History Tab →',
         detailShot: 'details/d_attendance.png', detailCap: 'Employee 视图 · History 月历 + Daily Records（July 2026）', detailDesc: '点击 History Tab 切换后的员工个人考勤历史页：上方 Clock In/Out / History / Leave 三 Tab，July 2026 月历（色块标注 Present 绿 / Late 黄 / Annual 蓝 / Sick 橙 / Personal 紫 / No Record 灰，7/7 与 7/28 高亮选中）+ 下方 Daily Records 明细表（Date / Day / Clock In / Clock Out / Work Hours / Status / Leave Type，20 days recorded）。',
         detailMeta: [['acc','Tab','History 月历视图'],['warn','7 月记录','20 days recorded'],['ok','状态','6 种色块分类']],
         meta: [
-            ['ok', '全量记录', '227'], ['warn', 'LATE 迟到', '14'], ['acc', 'LEAVE 请假', '19'], ['warn', 'ABSENT', '8']
+            ['ok', '本月 Present', '14'], ['warn', '本月 Late', '1'], ['warn', '本月 Absent', '6'], ['acc', 'Total Hours', '139h']
         ],
         features: [
-            ['A', '实时打卡', '基于客户端时间的"签到/签退"双按钮 + 状态标签。'],
-            ['B', '余额管理', '年假、病假、事假分类余额，使用/剩余自动扣减。'],
-            ['C', '管理员视图', '所有员工考勤按时间倒序，支持分页浏览。'],
+            ['A', '实时打卡', '时分秒级"签到/签退"双按钮，Clock In/Out 状态实时切换。'],
+            ['B', '本月汇总', 'Present / Late / Absent / Total Hours / Workdays 五卡片。'],
+            ['C', '假期余额', '年假 / 事假 / 病假分条显示，已用 / 剩余自动扣减。'],
         ],
         stack: [
             ['useEffect', '每秒更新时间'], ['Prisma', '按月聚合统计'], ['NestJS', '/attendance/all-records']
         ],
     },
     {
-        key: 'approvals', icon: '📝', title: '审批流 · Approvals', badge: '全部审批 · 35+ 条多类型',
-        desc: '覆盖 5 大审批类型：休假 / 差旅 / 费用报销 / 采购 / 通用申请；每类多级审批步骤，步骤进度条实时更新。',
-        shot: '03_approvals_all.png', cap: '全部审批列表 · All Approvals Tab',
+        key: 'approvals', icon: '📝', title: '审批流 · Approvals', badge: '全部审批 · 多类型混合',
+        desc: '覆盖多种审批类型：休假 / 加班 / 资产借用 / 考勤补卡；每条多级审批步骤 Step 1/N 进度条实时显示，支持 My Requests / Pending / All Approvals 三 Tab 切换。',
+        shot: '03_approvals_all.png', cap: '全部审批列表 · All Approvals Tab（多类型待办）',
         detailShot: 'details/d_approval.png', detailCap: '第 2 行 · [Demo] 7月27日加班 2小时（客户需求紧急）', detailDesc: '左侧 Request Details（Description / Date Range / Requester / Created）+ 右侧 Approval Flow 步骤进度条（Step 1 Dept Manager ✓ 同意 → Step 2 HR Manager 等待）。',
         detailMeta: [['acc','类型','Overtime Request'],['warn','状态','Pending · Step 1/2'],['ok','申请人','Dept Mgr']],
         meta: [
-            ['ok', '全部审批', '35+'], ['warn', 'PENDING', '11'], ['ok', 'APPROVED', '18'], ['danger', 'REJECTED', '4']
+            ['ok', '页面记录', '6 条'], ['warn', '均为 PENDING', '6 条'], ['acc', '类型覆盖', '休假/加班/借用/补卡'], ['warn', '步骤进度', 'Step 0/1 ~ Step 1/2']
         ],
         features: [
-            ['A', '多类型', 'LEAVE / TRAVEL / PURCHASE / EXPENSE / GENERAL。'],
-            ['B', '步骤进度', '当前步骤 / 总步骤 显示在每条记录下。'],
-            ['C', '三种视图', 'My Requests / Pending / All Approvals 三 Tab 切换。'],
+            ['A', '多类型', 'LEAVE / OVERTIME / ASSET BORROW / ATTENDANCE CORRECTION 混合列表。'],
+            ['B', '步骤进度', 'Step 当前 / 总数 实时展示，Approved 已完成步骤打勾。'],
+            ['C', '三种视图', 'My Requests / Pending Approvals / All Approvals 三 Tab。'],
         ],
         stack: [
             ['NestJS 守卫', 'PermissionsGuard + approval:approve'],
@@ -578,18 +578,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'expenses', icon: '💰', title: '费用报销 · Expense Management', badge: '待审批列表 · 156 条全量',
-        desc: '6 大费用类别：差旅 / 餐饮 / 办公用品 / 电子设备 / 交通 / 培训；多级审批 + 预算控制 + 发票上传确认。',
-        shot: '04_expenses_pending.png', cap: '费用报销 · 待审批视图（18 条待批示例）',
+        key: 'expenses', icon: '💰', title: '费用报销 · Expense Management', badge: 'My Expenses · 全状态列表',
+        desc: 'My Expenses 视图统一展示：Pending / Approved / Cancelled / Rejected / Reimbursed 多状态；6 大类目（差旅/餐饮/办公/电子/交通/培训），支持搜索与状态筛选。',
+        shot: '04_expenses_pending.png', cap: 'My Expenses 全状态 · Pending / Cancelled / Rejected / Reimbursed 混合',
         detailShot: 'details/d_expense.png', detailCap: '第 1 行 · 季度办公用品采购', detailDesc: 'Expense Details 详情 + Approve/Reject 操作按钮 + Approval Timeline 审批时间线。',
         detailMeta: [['ok','类目','Office Supplies'],['warn','金额','$1280'],['warn','状态','Pending TL']],
         meta: [
-            ['ok', '报销单总量', '156'], ['warn', '待审批', '18'], ['ok', '已通过', '115'], ['acc', '金额范围', '$35 ~ $3.8k']
+            ['ok', '页面记录', '12 条'], ['warn', 'PENDING', '7'], ['danger', 'CANCEL/REJECT', '各 1 条'], ['acc', '金额范围', '$1280 ~ $12000']
         ],
         features: [
-            ['A', '类目丰富', '6 大类 + 自定义标签，适配企业所有常见报销场景。'],
-            ['B', '多级审批', 'Finance / Dept Manager / Team Lead 角色配置。'],
-            ['C', '预算控制', '按部门/类目设定月度预算，超额自动标红提醒。'],
+            ['A', '类目丰富', 'Office Supplies / Meals / Travel / Technology 6+ 大类。'],
+            ['B', '状态全览', 'My Expenses Tab 同时展示 Pending / Cancelled / Rejected / Reimbursed。'],
+            ['C', '状态筛选', 'All Status 下拉，按标题关键词搜索。'],
         ],
         stack: [
             ['ExpenseWorkflow', '工作流步骤表'],
@@ -598,18 +598,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'bookings', icon: '🏢', title: '会议室预订 · Bookings', badge: '全部预订 · 28 条跨会议室',
-        desc: '5 个会议室（A~E，容量 4~16 人，配置投影/白板/视频会议设备）；15 分钟粒度预订冲突检测；状态三态。',
-        shot: '05_bookings_all.png', cap: '预订总览 · 全量 28 条 · 5 个会议室混合',
+        key: 'bookings', icon: '🏢', title: '会议室预订 · Bookings', badge: '全部预订 · 多房间多状态',
+        desc: '跨 6+ 会议室（大会议 A / 小会议 B / 培训 C / 洽谈 D / Europ / Asia）；状态 Approved / Rejected / Pending 三态，支持按时间范围与状态筛选，冲突校验通过后统一审批。',
+        shot: '05_bookings_all.png', cap: '预订总览 · Approved / Rejected / Pending 三态混合',
         detailShot: 'details/d_booking.png', detailCap: '第 2 行 · [Demo] 供应商洽谈 · PENDING', detailDesc: 'Start/End Time + Attendees 3 人 + Room 详情（小会议室 B · 2F-中区 205 · Capacity 6）+ Booked By Finance Manager(@finance) + 右上 Approve/Reject 审批按钮。',
         detailMeta: [['warn','状态','PENDING'],['acc','房间','小会议室 B'],['ok','时长','11:00-12:00 · 1h · 3人']],
         meta: [
-            ['ok', '预订数', '28'], ['acc', '会议室', '5 间'], ['warn', 'PENDING', '4'], ['ok', 'CONFIRMED', '21']
+            ['ok', '页面记录', '10 条+'], ['acc', '会议室覆盖', '大/小/培训/洽谈/Europ/Asia'], ['warn', 'PENDING', '1 条'], ['ok', 'APPROVED', '7 条+']
         ],
         features: [
-            ['A', '冲突检测', '提交时校验同会议室时间交集。'],
-            ['B', '15 分钟粒度', '时间选择器按 15min 递进。'],
-            ['C', '状态流转', 'PENDING → CONFIRMED → CANCELLED。'],
+            ['A', '冲突检测', '提交时校验同会议室时间交集自动拦截冲突。'],
+            ['B', '15 分钟粒度', 'Time 按 15min 递进，支持全天预订。'],
+            ['C', '状态流转', 'PENDING → APPROVED / REJECTED 审批。'],
         ],
         stack: [
             ['前端 TimeGrid', '自定义时间网格组件'],
@@ -619,19 +619,19 @@ const MODULES = [
     },
     {
         key: 'meeting-rooms', icon: '🚪', title: '会议室管理 · Meeting Rooms', badge: '房间卡片 · 容量/设备配置',
-        desc: '可视化展示每间会议室的容量、配套设备、楼层位置和当前状态，支持新建 / 编辑 / 停用；详情页直接提供周可用性选择与一键预订。',
+        desc: '6 间会议室卡片视图，展示容量、楼层、配套设备与状态；状态三态：Maintenance / Available / Reserved。详情页支持 Weekly Availability 与一键预订。',
         shot: '06_meeting_rooms.png', cap: '会议室总览 · 6 间卡片（Maintenance / Available / Reserved 三状态）',
         detailShot: 'details/d_room.png',
         detailCap: '第 2 行第 1 张 · [Demo] 大会议室 A · 3F-东翼 301 · 容量 20 人',
         detailDesc: 'Room Info（位置 / 容量 / 设备 / 入驻时间）+ 右侧 Upcoming Bookings 即将预订卡片 + 下方 Weekly Availability 周视图 + Book Now 一键预订操作区。',
         detailMeta: [['ok','状态','AVAILABLE'],['acc','容量','20 people'],['warn','楼层','3F-东翼 301']],
         meta: [
-            ['acc', '房间数', '6'], ['ok', '可用 AVAILABLE', '3'], ['warn', '维护/预订中', '3'], ['acc', '最大容量', '50 人']
+            ['acc', '房间数', '6'], ['ok', 'AVAILABLE', '3'], ['warn', '维护/已预订', '各 1 + 2 = 3'], ['acc', '最大容量', '50 人']
         ],
         features: [
-            ['A', '卡片展示', '容量、楼层、设备图标一目了然。'],
-            ['B', '状态徽章', 'AVAILABLE / OCCUPIED / MAINTENANCE。'],
-            ['C', '配置灵活', '投影 / 白板 / 视频会议 / 电话会议 独立复选。'],
+            ['A', '卡片展示', '容量、楼层、设备图标一目了然，支持编辑/删除。'],
+            ['B', '状态徽章', 'Maintenance（黄）/ Available（绿）/ Reserved（灰）三色标识。'],
+            ['C', '配置灵活', 'TV / Projector / Whiteboard / Video Conference 独立勾选。'],
         ],
         stack: [
             ['CRUD', 'NestJS Controller + Service'],
@@ -640,18 +640,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'assets', icon: '📦', title: '资产管理 · Assets', badge: '全生命周期 · 40 件',
-        desc: '覆盖家具 / 电子 / IT 设备 / 车辆 / 办公用品 / 其他 6 大类；状态 6 种，支持分配、归还、调拨、报废、维修记录。',
-        shot: '07_assets.png', cap: '资产总览 · 40 件 · 按资产编号排序',
+        key: 'assets', icon: '📦', title: '资产管理 · Assets', badge: '资产总览 · 多分类',
+        desc: '覆盖家具 / 电器 / IT 通讯 多分类；当前视图展示 Assigned 已分配与 In Stock 在库两种状态，支持按资产名搜索与状态筛选，详情页支持分配/调拨/维修/报废全流程。',
+        shot: '07_assets.png', cap: '资产总览列表 · Assigned / In Stock 双状态混合',
         detailShot: 'details/d_asset.png', detailCap: '第 1 行 · 钢制办公文件柜 4层', detailDesc: 'Info / Allocations / Maintenance 三 Tab + Transfer / Schedule Maintenance / Retire / Edit 按钮 + Quick Stats。',
         detailMeta: [['ok','状态','ASSIGNED'],['warn','价格','$1299'],['acc','分类','Office Furniture']],
         meta: [
-            ['acc', '总量', '40'], ['ok', '在用 IN_USE', '22'], ['warn', '维护中', '5'], ['acc', '分类', '6 大类']
+            ['acc', '页面记录', '12 条+'], ['ok', '分类', '家具/电器/通讯/IT'], ['warn', 'Assigned', '多条'], ['acc', '价格范围', '$1299 ~ $3299']
         ],
         features: [
-            ['A', '全生命周期', '采购入库 → 领用 → 维护 → 归还 → 调拨 → 报废。'],
-            ['B', '分类管理', '6 大类 + 自定义标签，金额范围 $120 ~ $12,800。'],
-            ['C', '维护记录', 'AssetMaintenance 子表，记录每次维保。'],
+            ['A', '多分类', 'Office Furniture / Appliances / Communication / IT Equipment 6+。'],
+            ['B', '状态管理', 'Assigned 已分配 / In Stock 在库，状态联动使用人。'],
+            ['C', '全生命周期', '详情页支持分配/调拨/维保/报废。'],
         ],
         stack: [
             ['Prisma Relation', 'Asset ↔ AssetCategory 关联'],
@@ -660,18 +660,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'announcements', icon: '📢', title: '公告中心 · Announcements', badge: '7 条 · 置顶 + 三态',
-        desc: '支持发布/草稿/排期三态；置顶 4 条优先显示；可附带附件、阅读次数、重要等级标签。',
-        shot: '08_announcements.png', cap: '公告列表 · 4 Pin 置顶 + 普通公告',
+        key: 'announcements', icon: '📢', title: '公告中心 · Announcements', badge: '置顶 + 草稿 + 已发布',
+        desc: '公司通知公告：已发布置顶优先；支持 Draft 草稿 / Scheduled 排期 / Published 已发布 等状态；附有效期、重要等级；发布权限受 RBAC 控制。',
+        shot: '08_announcements.png', cap: '公告列表 · 2 Pin 置顶 + 草稿 × 2 + 普通公告',
         detailShot: 'details/d_announcement.png', detailCap: '第 1 条置顶 · Q3 OKR 公布', detailDesc: 'Published + Pinned 双徽章 + 公告正文 + 有效期 + Edit/Delete 操作区。',
         detailMeta: [['ok','状态','Published'],['warn','置顶','PINNED'],['acc','作者','Admin @ 7/21']],
         meta: [
-            ['ok', '总数', '7'], ['warn', '置顶 PIN', '4'], ['acc', '已发布', '5'], ['warn', '草稿/排期', '2']
+            ['ok', '页面记录', '5 条'], ['warn', '置顶 PIN', '2 条'], ['acc', '已发布', '3 条'], ['warn', 'Draft 草稿', '2 条']
         ],
         features: [
-            ['A', '置顶机制', 'PIN 图标标记，列表顶部聚合并排序。'],
-            ['B', '状态流', 'DRAFT / SCHEDULED / PUBLISHED / ARCHIVED。'],
-            ['C', '权限', '只有 sysadmin / 有 announcement:publish 的用户能发。'],
+            ['A', '置顶机制', 'Q3 OKR / 体检安排 置顶 PIN 徽章，聚合顶部排序。'],
+            ['B', '状态流', 'Draft（灰） / Published + Pinned（蓝 PIN）/ Information Technology 分类。'],
+            ['C', '权限控制', 'sysadmin / announcement:publish 的用户可发布 / 编辑 / 删除。'],
         ],
         stack: [
             ['Prisma isPublished', '布尔 + publishedAt 时间'],
@@ -680,16 +680,16 @@ const MODULES = [
         ],
     },
     {
-        key: 'users', icon: '👥', title: '用户管理 · Users', badge: '8 用户 · 完整 CRUD',
-        desc: '8 个典型用户覆盖 8 种角色；支持启停用、分配部门/角色、头像上传、重置密码。',
-        shot: '09_users.png', cap: '用户列表 · 8 账号 × 8 角色',
+        key: 'users', icon: '👥', title: '用户管理 · Users', badge: '多角色 · 完整 CRUD',
+        desc: '覆盖 Intern / Team Lead / Finance / HR / Guest / admin 等多角色多部门用户；支持搜索、状态切换、分配部门与角色、头像上传、编辑、删除、重置密码。',
+        shot: '09_users.png', cap: '用户管理列表 · 多部门 / 多角色 / 多状态',
         meta: [
-            ['acc', '用户数', '8'], ['ok', '角色覆盖', '8 种'], ['ok', '启用', '8'],
+            ['acc', '页面记录', '10 行+'], ['ok', '状态', '均 Active'], ['warn', 'admin 角色用户', '2+'], ['acc', '部门覆盖', 'Operations/Finance/HR/Company HQ/N/A'],
         ],
         features: [
-            ['A', '典型账户', 'sysadmin / hr / finance / deptmgr / teamlead / employee / intern / guest。'],
-            ['B', '状态开关', '启用/停用 toggle，实时同步。'],
-            ['C', '角色分配', '下拉选择 8 种角色，联动 RBAC 权限。'],
+            ['A', '多角色覆盖', 'Intern / Team Lead / Finance Manager / HR Manager / admin / Guest 等。'],
+            ['B', '状态开关', 'Active 绿色徽章，支持编辑/删除操作。'],
+            ['C', '角色与部门分配', '每行指定 Role 与 Department，支持编辑。'],
         ],
         stack: [
             ['Prisma upsert', 'seed.ts 幂等初始化'],
@@ -698,16 +698,16 @@ const MODULES = [
         ],
     },
     {
-        key: 'departments', icon: '🏛', title: '部门管理 · Departments', badge: '树形结构 · 6 部门',
-        desc: '典型 4 层企业架构：集团 → 技术中心 / 市场 / 财务 / 人力资源 等；支持新建子部门 / 移动层级。',
-        shot: '10_departments.png', cap: '部门列表 · 6 个部门 · 父子层级展示',
+        key: 'departments', icon: '🏛', title: '部门管理 · Departments', badge: '树形结构 · 两级组织',
+        desc: '两级组织架构：Company HQ 为 ROOT 节点，下属 HR / IT / Finance / Marketing / Operations 5 个子部门卡片展示；支持新建子部门、编辑部门信息、删除空部门。',
+        shot: '10_departments.png', cap: '组织结构 · ROOT 节点 + 5 子部门卡片',
         meta: [
-            ['acc', '部门数', '6'], ['ok', '层级', '最多 3 层'],
+            ['acc', '部门数', '6'], ['ok', '层级', '2 级'], ['warn', 'ROOT 人数', '11 employees'], ['acc', '子部门人数', '0 (展示阶段)'],
         ],
         features: [
-            ['A', '层级结构', 'parentId 自关联，递归查询。'],
-            ['B', '部门主管', '可单独指定部门负责人。'],
-            ['C', '人数汇总', '每个部门下用户总数实时显示。'],
+            ['A', '层级结构', 'Company HQ (ROOT) → HR / IT / Finance / Marketing / Operations，parentId 自关联。'],
+            ['B', '部门主管', '可指定 Dept Head，卡片展示 Code 缩写、人数、子部门数。'],
+            ['C', '人数汇总', 'Company HQ 11 employees + 5 sub-depts，其余部门暂未分配。'],
         ],
         stack: [
             ['Self Relation', 'Prisma parent ↔ children[]'],
@@ -716,18 +716,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'roles', icon: '🛡', title: '角色权限 · RBAC', badge: '8 角色 · 权限矩阵',
-        desc: '8 种预置角色覆盖企业常见岗位；每个角色独立 30+ 权限代码位，支持自定义新增与编辑。',
-        shot: '11_roles.png', cap: '角色列表 · 8 种角色 · 权限数',
+        key: 'roles', icon: '🛡', title: '角色权限 · RBAC', badge: '多角色 · 权限矩阵',
+        desc: '8 个角色条目（含测试角色与预置角色）；从基础 user(11) 到 System Administrator(52) 权限代码不等；支持编辑角色权限与新增自定义角色，权限守卫自动校验 @Permissions 装饰器。',
+        shot: '11_roles.png', cap: '角色列表 · 8 行 · Permissions / Users / Created / Actions',
         detailShot: 'details/d_role_permissions.png', detailCap: 'Employee 行 · 权限明细弹窗（18 项权限勾选）', detailDesc: 'Permission Assignment 弹窗：角色名 Employee + 权限分类分组勾选（Auth / User / Dept / Role / Attendance / Approval / Expense / Booking / Room / Asset / Announcement / Report 共 12 类）+ 底部 Save / Cancel 操作。',
         detailMeta: [['ok','角色','Employee'],['acc','权限数','18 项 / 52 总'],['warn','分组','12 个功能模块']],
         meta: [
-            ['acc', '角色', '8'], ['ok', '权限代码', '30+'],
+            ['acc', '页面角色', '8 条'], ['ok', '权限范围', '0 ~ 52 perms'], ['warn', '含测试角色', 'Test Role + admin/user/manager 等'], ['acc', '预置 + 自定义', '混合列表'],
         ],
         features: [
-            ['A', '8 种典型角色', 'System Admin / HR / Finance / Dept Mgr / Team Lead / Employee / Intern / Guest。'],
-            ['B', '权限守卫', 'PermissionsGuard 校验 @Permissions 装饰器。'],
-            ['C', '前端 hasPermission', '隐藏对应按钮和菜单入口。'],
+            ['A', '实际 8 条', 'admin / user / manager / Test Role / hrbp / System Administrator / HR Manager / Finance Manager。'],
+            ['B', '权限守卫', 'PermissionsGuard 校验 @Permissions 装饰器，越界自动 403。'],
+            ['C', '前端联动', 'hasPermission() 统一控制按钮与菜单入口。'],
         ],
         stack: [
             ['@Permissions()', '自定义装饰器声明权限'],
@@ -736,18 +736,18 @@ const MODULES = [
         ],
     },
     {
-        key: 'reports', icon: '📈', title: '报表中心 · Reports', badge: '5 张报表 · Excel 导出',
-        desc: 'HR / 考勤 / 审批 / 报销 / 资产 5 大报表卡片；支持 Excel 导出、自定义日期范围筛选。',
-        shot: '12_reports.png', cap: '报表中心入口 · 5 大报表卡片',
+        key: 'reports', icon: '📈', title: '报表中心 · Reports', badge: '5 大报表 · 入口页',
+        desc: '入口展示 4 个全局指标（员工数/审批数/出勤率/平均审批周期）+ 5 张报表卡片（HR / Attendance / Approval / Expense / Asset），点击 View Report 进入详细视图并支持 Excel / CSV 导出。',
+        shot: '12_reports.png', cap: 'Analytics & Reports 入口 · 4 指标卡 + 5 报表卡片',
         detailShot: 'details/d_report.png', detailCap: 'Expense Report · 费用报销分析报表（6 大数据视图）', detailDesc: '筛选栏（Date Range / Department / Year）+ 指标卡（Total/Approved/Pending/Reimbursed）+ 下方 6 大分析视图：Department Spending 柱状图 + Category Distribution 饼图 + Monthly Trend 折线图 + Top 10 Spenders 排名表 + Department Trends 月度对比 + Budget vs Actual 预算执行表。',
         detailMeta: [['ok','报表类型','Expense Report'],['acc','分析视图','6 个图表 + 表格'],['warn','导出','CSV + XLSX']],
         meta: [
-            ['acc', '报表数', '5'], ['ok', '导出格式', 'XLSX'], ['acc', '数据维度', '多维聚合'],
+            ['acc', '顶部指标', '4 卡片'], ['ok', '报表数', '5'], ['warn', '平均出勤率', '85%'], ['acc', '平均审批周期', '10.9h'],
         ],
         features: [
-            ['A', '5 大报表', 'HR 花名册 / 考勤趋势 / 审批效率 / 报销分析 / 资产台账。'],
-            ['B', 'Excel 导出', 'sheetjs 生成 xlsx，浏览器自动下载。'],
-            ['C', '图表可视化', 'Recharts 折线 / 柱状 / 饼图。'],
+            ['A', '5 大报表入口', 'HR / Attendance / Approval / Expense / Asset 5 卡片分类。'],
+            ['B', '全局指标', '员工 24 / 审批 35 / 出勤率 85% / 审批周期 10.9h。'],
+            ['C', '详情导出', 'View Report 进入后支持 CSV / XLSX 下载。'],
         ],
         stack: [
             ['Recharts', 'ECharts 风格'],
